@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Pagi.Core.Models
+{
+    public class Clerk
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<Client> Clients { get; set; }
+
+    }
+}
