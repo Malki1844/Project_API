@@ -33,35 +33,34 @@ namespace Bank.Controllers
 
         // GET api/<ClerkController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            var clerk = _clerkService.GetId(id);
+            var clerk =await _clerkService.GetIdAsync(id);
             var clerkDto = _mapper.Map<ClerckDto>(clerk);
             return Ok(clerkDto);
         }
 
         // POST api/<ClerkController>
         [HttpPost]
-        public void Post([FromBody] ClerckDto clerkDto)
+        public async Task Post([FromBody] ClerckDto clerkDto)
         {
           var clerk = _mapper.Map<Clerk>(clerkDto);
-            _clerkService.PostAsync(clerk);
+           await _clerkService.PostAsync(clerk);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] ClerckDto value)
+        public async Task Put(int id, [FromBody] ClerckDto value)
         {
             var clerk=_mapper.Map<Clerk>(value);
-
-            _clerkService.Put(id, clerk);
+           await _clerkService.PutAsync(id, clerk);
 
         }
 
         // DELETE api/<ClientController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _clerkService.Delete(id);
+           await _clerkService.DeleteAsync(id);
         }
     }
 }

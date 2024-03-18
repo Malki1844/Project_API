@@ -20,22 +20,22 @@ namespace Pagi.Service
         {
             return await _turnRepository.GetListAsync();
         }
-        public Turn GetId(int id)
+        public async Task<Turn> GetIdAsync(int id)
         {
           
-            return _turnRepository.GetById(id);
+            return await _turnRepository.GetByIdAsync(id);
         }
-        public void Post(Turn date)
+        public async Task PostAsync(Turn date)
         {
-            _turnRepository.Post(date);
+           await _turnRepository.PostAsync(date);
         }
-        public void Put(int id, Turn value)
+        public async Task PutAsync(int id, Turn value)
         {
-            _turnRepository.Put(id, value);
+           await _turnRepository.PutAsync(id, value);
         }
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            _turnRepository.Delete(id);
+           await _turnRepository.DeleteAsync(id);
         }
     }
 }

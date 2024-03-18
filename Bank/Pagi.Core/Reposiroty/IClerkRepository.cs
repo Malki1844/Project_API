@@ -10,9 +10,9 @@ namespace Pagi.Core.Reposiroty
     public interface IClerkRepository
     {
         Task<IEnumerable<Clerk>> GetListAsync();
-        void PostAsync(Clerk clerk);
-        Clerk GetById(int id);
-        public void Put(int id, Clerk value);
-        public void Delete(int id);
+        Task PostAsync(Clerk clerk);
+        Task<Clerk> GetByIdAsync(int id);
+        Task PutAsync(int id, Clerk value);
+        Task DeleteAsync(int id);
     }
 }

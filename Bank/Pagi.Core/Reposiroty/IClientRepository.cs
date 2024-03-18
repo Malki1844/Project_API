@@ -10,9 +10,10 @@ namespace Pagi.Core.Reposiroty
     public interface IClientRepository
     {
         Task<IEnumerable<Client>> GetListAsync();
-        void Post(Client client);
-        public void Put(int id, Client value);
-        public void Delete(int index);
-        public Client GetById(int id);  
+        Task PostAsync(Client client);
+        Task PutAsync(int id, Client value);
+        Task DeleteAsync(int id);
+        Task<Client> GetByIdAsync(int id);
+
     }
 }

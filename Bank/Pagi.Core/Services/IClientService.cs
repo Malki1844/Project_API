@@ -10,9 +10,9 @@ namespace Pagi.Core.Services
     public interface IClientService
     {
         Task<IEnumerable<Client>> GetAllAsync();
-        Client GetId(int id);
-        void Post(Client client);
-        void Put(int id, Client value);
-        void Delete(int id);
+        Task<Client> GetIdAsync(int id);
+        Task PostAsync(Client client);
+        Task PutAsync(int id, Client value);
+        Task DeleteAsync(int id);
     }
 }

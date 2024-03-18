@@ -19,27 +19,27 @@ namespace Pagi.Service
         {
             return await _clerksRepository.GetListAsync();
         }
-        public Clerk GetId(int id)
+        public async Task<Clerk> GetIdAsync(int id)
         {
           //  int index = _clerksRepository.GetList().FindIndex(c => c.Id == id);
-            return _clerksRepository.GetById(id);
+            return await _clerksRepository.GetByIdAsync(id);
         }
-        public void PostAsync(Clerk clerk)
+        public async Task PostAsync(Clerk clerk)
         {
-            _clerksRepository.PostAsync(clerk);
+           await _clerksRepository.PostAsync(clerk);
          //await   _clerksRepository.PostAsync(clerk);
 
         }
-        public void Put(int id, Clerk value)
+        public async Task PutAsync(int id, Clerk value)
         {
-            _clerksRepository.Put(id, value);
+            await _clerksRepository.PutAsync(id, value);
             // _clerksRepository.GetById(id).Name=value.Name;
             //   _clerksRepository.GetList()[index].Name = value.Name;
 
         }
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            _clerksRepository.Delete(id);
+           await _clerksRepository.DeleteAsync(id);
          //   int index = _clerksRepository.GetList().ToList().FindIndex(c => c.Id == id);
          //_clerksRepository.GetList().ToList().Remove(_clerksRepository.GetList().ToList()[index]);
         }

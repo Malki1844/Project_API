@@ -10,9 +10,9 @@ namespace Pagi.Core.Reposiroty
     public interface ITurnRepository
     {
         Task<IEnumerable<Turn>> GetListAsync();
-        Turn GetById(int id);
-        public void Post(Turn turn);
-        public void Put(int id, Turn turn);
-        public void Delete(int id);
+       Task<Turn> GetByIdAsync(int id);
+        Task PostAsync(Turn turn);
+        Task PutAsync(int id, Turn turn);
+        Task DeleteAsync(int id);
     }
 }

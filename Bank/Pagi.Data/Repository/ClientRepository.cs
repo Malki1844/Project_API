@@ -20,29 +20,29 @@ namespace Pagi.Data.Repository
         {
             return await _context.Clients.Include(t=>t.turn).ToListAsync();
         }
-        public void Post(Client client)
+        public async Task PostAsync(Client client)
         {
             _context.Clients.Add(client);
-            _context.SaveChangesAsync();
+           await _context.SaveChangesAsync();
         }
-        public void Put(int id, Client value)
+        public async Task PutAsync(int id, Client value)
         {
             _context.Clients.FirstOrDefault(x => x.Id == id).Name=value.Name;
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
         }
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var client = _context.Clients.FirstOrDefault(x => x.Id == id);
             if (client != null)
             {
                 _context.Clients.Remove(client);
-                _context.SaveChanges();
+             await   _context.SaveChangesAsync();
             }
         }
-        public Client GetById(int id)
+        public async Task<Client> GetByIdAsync(int id)
         {
             return _context.Clients.FirstOrDefault(x => x.Id==id);
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
         }
     }
 }

@@ -10,9 +10,9 @@ namespace Pagi.Core.Services
     public interface ITurnService
     {
         Task<IEnumerable<Turn>> GetAllAsync();
-        Turn GetId(int id);
-        void Put(int id, Turn value);
-        void Delete(int id);
-        void Post(Turn turn);
+       Task<Turn> GetIdAsync(int id);
+        Task PutAsync(int id, Turn value);
+        Task DeleteAsync(int id);
+        Task PostAsync(Turn turn);
     }
 }

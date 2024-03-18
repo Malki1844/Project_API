@@ -32,37 +32,37 @@ namespace Bank.Controllers
 
         // GET api/<ClientController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            var client=_clientService.GetId(id);
+            var client= await _clientService.GetIdAsync(id);
             var clientDto = _mapper.Map<ClientDto>(client);
-            return Ok(clientDto);
+            return  Ok(clientDto);
 
         }
 
         // POST api/<ClientController>
         [HttpPost]
-        public void Post([FromBody] ClientDto clientDto)
+        public async Task Post([FromBody] ClientDto clientDto)
         {
             var client = _mapper.Map<Client>(clientDto);
-            _clientService.Post(client);
+           await _clientService.PostAsync(client);
         }
 
         // PUT api/<ClientController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] ClientDto value)
+        public async Task Put(int id, [FromBody] ClientDto value)
         {
             var client = _mapper.Map<Client>(value);
 
-            _clientService.Put(id, client);
+           await _clientService.PutAsync(id, client);
             
         }
 
         // DELETE api/<ClientController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _clientService.Delete(id);
+           await _clientService.DeleteAsync(id);
         }
     }
 }

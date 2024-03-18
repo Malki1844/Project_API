@@ -20,30 +20,30 @@ namespace Pagi.Data.Repository
         {
             return await _context.Clerks.ToListAsync();
         }
-        public async void PostAsync(Clerk clerk)
+        public async Task PostAsync(Clerk clerk)
         {
             _context.Clerks.Add(clerk);
-          await   _context.SaveChangesAsync();
+          await  _context.SaveChangesAsync();
         }
-        public Clerk GetById(int id)
+        public async Task<Clerk> GetByIdAsync(int id)
         {
 
           return _context.Clerks.FirstOrDefault(x => x.Id==id);
-            _context.SaveChanges();
+          await  _context.SaveChangesAsync();
         }
 
-        public void Put(int id, Clerk value)
+        public async Task PutAsync(int id, Clerk value)
         {
             _context.Clerks.FirstOrDefault(x => x.Id == id).Name=value.Name;
-            _context.SaveChanges();
+          await  _context.SaveChangesAsync();
         }
-        public void Delete(int id)
+        public  async Task DeleteAsync(int id)
         {
             var clerk = _context.Clerks.FirstOrDefault(x => x.Id == id);
             if (clerk != null)
             {
                 _context.Clerks.Remove(clerk);
-                _context.SaveChanges();
+             await   _context.SaveChangesAsync();
             }
          
            

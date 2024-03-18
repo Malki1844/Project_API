@@ -33,50 +33,33 @@ namespace Bank.Controllers
 
         // GET api/<ClientController>/5
         [HttpGet("{id}")]
-        //public ActionResult Get(int id)
-        //{
-        //    int index = _turnService.GetAll().FindIndex(c => c.Id == id);
-        //    if(index == -1)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(_turnService.GetAll()[index]);
-
-        //}
-        public Turn Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-           
-            return _turnService.GetId(id);
+            //return _turnService.GetId(id);
+            var turn =await _turnService.GetIdAsync(id);
+            var turnDto = _mapper.Map<ClientDto>(turn);
+            return Ok(turnDto);
         }
         // POST api/<ClientController>
         [HttpPost]
-        public void Post([FromBody] Turn date)
+        public async Task Post([FromBody] Turn date)
         {
-            _turnService.Post(date);    
+           await _turnService.PostAsync(date);    
         }
 
         // PUT api/<ClientController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Turn value)
+        public async Task Put(int id, [FromBody] Turn value)
         {
-            _turnService.Put(id, value);
+           await _turnService.PutAsync(id, value);
         }
 
         // DELETE api/<ClientController>/5
         [HttpDelete("{id}")]
-        //public ActionResult Delete(int id)
-        //{
-        //    int index = _turnService.GetAll().FindIndex(x => x.Id == id);
-        //    if(index == -1)
-        //    {
-        //        return NotFound();
-        //    }
-        //    _turnService.GetAll().RemoveAt(index);
-        //    return Ok();
-        //}
-        public void Delete(int id)
+       
+        public async Task Delete(int id)
         {
-            _turnService.Delete(id);
+           await _turnService.DeleteAsync(id);
         }
     }
 }

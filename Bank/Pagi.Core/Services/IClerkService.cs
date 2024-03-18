@@ -10,9 +10,9 @@ namespace Pagi.Core.Services
     public interface IClerkService
     {
         Task<IEnumerable<Clerk>> GetAllAsync();
-        Clerk GetId(int id);
-        void PostAsync(Clerk clerk);
-        void Put(int id, Clerk name);
-        void Delete(int id);
+       Task<Clerk> GetIdAsync(int id);
+        Task PostAsync(Clerk clerk);
+        Task PutAsync(int id, Clerk value);
+        Task DeleteAsync(int id);
     }
 }

@@ -1,3 +1,4 @@
+using Bank.midaleWare;
 using Pagi.Core;
 using Pagi.Core.Reposiroty;
 using Pagi.Core.Services;
@@ -22,20 +23,23 @@ builder.Services.AddScoped<ITurnRepository, TurnRepository>();
 //builder.Services.AddSingleton<DataContext>(); 
 builder.Services.AddDbContext<DataContext>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
+var policy = "policy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: policy, policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
+app.UseMiddleware<shabatMidaleWare>();
 app.MapControllers();
-
 app.Run();
