@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pagi.Core.DTOs;
 using Pagi.Core.Models;
 using Pagi.Core.Services;
-
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,6 +11,7 @@ namespace Bank.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ClerkController : ControllerBase
     {
         private readonly IClerkService _clerkService;

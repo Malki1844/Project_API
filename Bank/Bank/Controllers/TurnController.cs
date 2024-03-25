@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pagi.Core.DTOs;
 using Pagi.Core.Models;
@@ -11,6 +12,7 @@ namespace Bank.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TurnController : ControllerBase
     {
         private readonly IMapper _mapper;
